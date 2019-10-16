@@ -18,7 +18,11 @@ public class WordCountLocal {
 		}
 
 		try {
+			long before = System.currentTimeMillis();
 			WordCountLocal wordCountLocal = new WordCountLocal(args);
+			long after = System.currentTimeMillis();
+			long difference = after - before;
+			System.out.println("The total time is " + difference + "ms");
 			System.out.println(wordCountLocal.toString());
 		} catch (FileNotFoundException e) {
 			die("Files were removed while the program was running");
