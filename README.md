@@ -23,7 +23,3 @@ Wednesday, October 23rd, 11:59 PM EST.
 [8]: input3.txt
 [9]: local_output.txt
 [10]: cluster_output.txt
-
-## TODO
-
-cluster_output.txt, clusterscreenshots, WordCount.java

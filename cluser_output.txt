@@ -1,0 +1,279 @@
+toor@toor-Latitude-3440:~/Documents/1699/CS1699-2019-WordCount-H3$ ssh daa85@ric-edge-01.sci.pitt.edu
+
+   University of Pittsburgh
+Department of Computer Science
+
+Unauthorized access prohibited
+
+daa85@ric-edge-01.sci.pitt.edu's password: 
+Last login: Wed Oct 23 19:39:12 2019 from sremote-10-195-74-5.vpn.pitt.edu
+
+       THIS SYSTEM IS FOR THE USE OF AUTHORIZED USERS ONLY.
+
+       Individuals using this computer system without authority, or in
+       excess of their authority, are subject to having all of their
+       activities on this system monitored and recorded by system
+       personnel.
+
+       In the course of monitoring individuals improperly using this
+       system, or in the course of system maintenance, the activities
+       of authorized users may also be monitored.
+
+       Anyone using this system expressly consents to such monitoring
+       and is advised that if such monitoring reveals possible
+       evidence of criminal activity, system personnel may provide the
+       evidence of such monitoring to law enforcement officials.
+
+(1) ric-edge-01 $ vim .bashrc
+(2) ric-edge-01 $ . $_
+(3) ric-edge-01 $ hadoop fs -ls
+Found 1 items
+drwx------   - daa85 supergroup          0 2019-10-23 19:46 .staging
+(4) ric-edge-01 $ hadoop fs -put testData/ .
+(5) ric-edge-01 $ hadoop jar wordcount.jar WordCount testData output
+19/10/23 19:57:40 INFO client.RMProxy: Connecting to ResourceManager at ric-master-03.sci.pitt.edu/192.168.1.155:8032
+19/10/23 19:57:41 INFO input.FileInputFormat: Total input paths to process : 3
+19/10/23 19:57:41 INFO mapreduce.JobSubmitter: number of splits:3
+19/10/23 19:57:41 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1563990715146_0145
+19/10/23 19:57:41 INFO impl.YarnClientImpl: Submitted application application_1563990715146_0145
+19/10/23 19:57:41 INFO mapreduce.Job: The url to track the job: http://ric-master-03.sci.pitt.edu:8088/proxy/application_1563990715146_0145/
+19/10/23 19:57:41 INFO mapreduce.Job: Running job: job_1563990715146_0145
+19/10/23 19:57:48 INFO mapreduce.Job: Job job_1563990715146_0145 running in uber mode : false
+19/10/23 19:57:48 INFO mapreduce.Job:  map 0% reduce 0%
+19/10/23 19:57:58 INFO mapreduce.Job:  map 33% reduce 0%
+19/10/23 19:57:59 INFO mapreduce.Job:  map 100% reduce 0%
+19/10/23 19:58:06 INFO mapreduce.Job:  map 100% reduce 1%
+19/10/23 19:58:08 INFO mapreduce.Job:  map 100% reduce 32%
+19/10/23 19:58:09 INFO mapreduce.Job:  map 100% reduce 73%
+19/10/23 19:58:10 INFO mapreduce.Job:  map 100% reduce 88%
+19/10/23 19:58:11 INFO mapreduce.Job:  map 100% reduce 89%
+19/10/23 19:58:12 INFO mapreduce.Job:  map 100% reduce 90%
+19/10/23 19:58:13 INFO mapreduce.Job:  map 100% reduce 96%
+19/10/23 19:58:14 INFO mapreduce.Job:  map 100% reduce 97%
+19/10/23 19:58:15 INFO mapreduce.Job:  map 100% reduce 98%
+19/10/23 19:58:16 INFO mapreduce.Job:  map 100% reduce 100%
+19/10/23 19:58:19 INFO mapreduce.Job: Job job_1563990715146_0145 completed successfully
+19/10/23 19:58:19 INFO mapreduce.Job: Counters: 50
+  File System Counters
+    FILE: Number of bytes read=7374
+    FILE: Number of bytes written=39424690
+    FILE: Number of read operations=0
+    FILE: Number of large read operations=0
+    FILE: Number of write operations=0
+    HDFS: Number of bytes read=28417104
+    HDFS: Number of bytes written=1081
+    HDFS: Number of read operations=789
+    HDFS: Number of large read operations=0
+    HDFS: Number of write operations=520
+  Job Counters 
+    Launched map tasks=3
+    Launched reduce tasks=260
+    Rack-local map tasks=3
+    Total time spent by all maps in occupied slots (ms)=24414
+    Total time spent by all reduces in occupied slots (ms)=1597746
+    Total time spent by all map tasks (ms)=24414
+    Total time spent by all reduce tasks (ms)=1597746
+    Total vcore-milliseconds taken by all map tasks=24414
+    Total vcore-milliseconds taken by all reduce tasks=1597746
+    Total megabyte-milliseconds taken by all map tasks=24999936
+    Total megabyte-milliseconds taken by all reduce tasks=1636091904
+  Map-Reduce Framework
+    Map input records=90000
+    Map output records=4048961
+    Map output bytes=44612546
+    Map output materialized bytes=15684
+    Input split bytes=402
+    Combine input records=4048961
+    Combine output records=243
+    Reduce input groups=81
+    Reduce shuffle bytes=15684
+    Reduce input records=243
+    Reduce output records=81
+    Spilled Records=486
+    Shuffled Maps =780
+    Failed Shuffles=0
+    Merged Map outputs=780
+    GC time elapsed (ms)=62740
+    CPU time spent (ms)=316090
+    Physical memory (bytes) snapshot=84517470208
+    Virtual memory (bytes) snapshot=768784142336
+    Total committed heap usage (bytes)=163193552896
+  Shuffle Errors
+    BAD_ID=0
+    CONNECTION=0
+    IO_ERROR=0
+    WRONG_LENGTH=0
+    WRONG_MAP=0
+    WRONG_REDUCE=0
+  WordCount$TokenizerMapper$CountersEnum
+    INPUT_WORDS=4048961
+  File Input Format Counters 
+    Bytes Read=28416702
+  File Output Format Counters 
+    Bytes Written=1081
+(6) ric-edge-01 $ hadoop fs -getmerge output collectedResults
+(7) ric-edge-01 $ cat collectedResults
+neque.  24937
+ut. 24770
+est 100077
+dolorem 100399
+sed 100411
+adipisci. 25230
+Neque 25010
+adipisci  99929
+ut  99744
+amet. 24854
+dolorem.  24789
+Amet  25003
+Magnam  24834
+eius  99449
+Quiquia 24892
+Tempora 24874
+Dolorem 24935
+Quaerat 24983
+voluptatem  99909
+quisquam. 25000
+labore. 24950
+neque 99954
+sed.  25129
+Voluptatem  24649
+Velit 25325
+Porro 25200
+Ut  24732
+modi. 24939
+dolor.  25159
+Modi  25132
+etincidunt. 24920
+Sit 25065
+quaerat.  24716
+Adipisci  25201
+velit 99908
+quiquia.  24994
+porro 100063
+etincidunt  99637
+non.  24810
+tempora.  24916
+Etincidunt  24827
+dolore  99712
+Non 24635
+quiquia 100248
+numquam 100143
+Consectetur 25350
+tempora 100124
+Eius  25184
+ipsum.  25108
+quaerat 99684
+aliquam.  25213
+sit 100062
+labore  99797
+consectetur 99978
+Numquam 24955
+quisquam  99618
+numquam.  25060
+Dolor 25395
+amet  99835
+Dolore  25194
+est.  24994
+voluptatem. 25158
+Est 25078
+Sed 24823
+Labore  24947
+dolore. 24997
+non 99996
+dolor 100029
+eius. 25095
+aliquam 100237
+Ipsum 24812
+sit.  24901
+consectetur.  24748
+modi  100088
+Quisquam  24964
+magnam  100258
+magnam. 25069
+porro.  25273
+Aliquam 24784
+ipsum 100106
+velit.  25054
+(8) ric-edge-01 $ cat collectedResults | sort
+Adipisci  25201
+adipisci. 25230
+adipisci  99929
+aliquam 100237
+Aliquam 24784
+aliquam.  25213
+amet. 24854
+Amet  25003
+amet  99835
+consectetur.  24748
+Consectetur 25350
+consectetur 99978
+dolor 100029
+dolor.  25159
+Dolor 25395
+dolore. 24997
+Dolore  25194
+dolore  99712
+dolorem 100399
+dolorem.  24789
+Dolorem 24935
+eius. 25095
+Eius  25184
+eius  99449
+est 100077
+est.  24994
+Est 25078
+Etincidunt  24827
+etincidunt. 24920
+etincidunt  99637
+ipsum 100106
+Ipsum 24812
+ipsum.  25108
+Labore  24947
+labore. 24950
+labore  99797
+magnam  100258
+Magnam  24834
+magnam. 25069
+modi  100088
+modi. 24939
+Modi  25132
+neque.  24937
+Neque 25010
+neque 99954
+Non 24635
+non.  24810
+non 99996
+numquam 100143
+Numquam 24955
+numquam.  25060
+porro 100063
+Porro 25200
+porro.  25273
+quaerat.  24716
+Quaerat 24983
+quaerat 99684
+quiquia 100248
+Quiquia 24892
+quiquia.  24994
+Quisquam  24964
+quisquam. 25000
+quisquam  99618
+sed 100411
+Sed 24823
+sed.  25129
+sit 100062
+sit.  24901
+Sit 25065
+tempora 100124
+Tempora 24874
+tempora.  24916
+Ut  24732
+ut. 24770
+ut  99744
+velit.  25054
+Velit 25325
+velit 99908
+Voluptatem  24649
+voluptatem. 25158
+voluptatem  99909
+(9) ric-edge-01 $ 
